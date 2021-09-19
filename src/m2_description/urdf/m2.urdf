@@ -1,0 +1,1958 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="m2"
+         xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <material name="LiDAR_grey">
+      <color rgba="0.59608 0.59608 0.59608 1.0"/>
+    </material>
+
+    <material name="Metal_Bling chrome">
+      <color rgba="0.8 0.8 0.82431 1.0"/>
+    </material>
+
+    <material name="Synth_Tyre rubber">
+      <color rgba="0.01678 0.01212 0.01212 1.0"/>
+    </material>
+
+    <material name="blue_police_light">
+      <color rgba="0 0 1.0 1.0"/>
+    </material>
+
+    <material name="body_black">
+      <color rgba="0.10594 0.10594 0.10594 1.0"/>
+    </material>
+
+    <material name="body_grey">
+      <color rgba="0.96 0.96 0.96 1.0"/>
+    </material>
+
+    <material name="red_police_light">
+      <color rgba="1.0 0 0 1.0"/>
+    </material>
+
+    <material name="white_police_light">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <material name="dummy_mat">
+      <color rgba="0.4 0.4 0.4 1.0"/>
+    </material>
+  
+    <link name="base_footprint"/>
+    
+    <link name="chassis">
+      <inertial>
+        <origin xyz="0.08838 -0.00198 0.17552" rpy="0 0 0"/>
+        <mass value="200.0"/>
+        <inertia ixx="24.43942" ixy="-3.57208" ixz="-2.64293" iyy="116.11656" iyz="0.10486" izz="111.43803"/>
+      </inertial>
+      
+      <visual name="body_front_lights_vis">
+        <origin xyz="0.98421 0.00023 0.09713" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_front_lights_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_lights_blue_vis">
+        <origin xyz="0.37794 0.18642 0.7649" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_blue_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="blue_police_light"/>
+      </visual>
+      <visual name="body_lights_red_vis">
+        <origin xyz="0.37978 -0.18222 0.76491" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_red_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="red_police_light"/>
+      </visual>
+      <visual name="body_lights_white_vis">
+        <origin xyz="0.40793 0.00023 0.7689" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_white_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_vis">
+        <origin xyz="0.07415 0.00012 0.24822" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      <visual name="camera_top_vis">
+        <origin xyz="0.11195 0.00142 1.30874" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/camera_top_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="chassis_vis">
+        <origin xyz="0.01034 -3e-05 0.00065" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/chassis_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <visual name="text_body_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="text_front_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_front_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      
+      <collision name="body_col">
+        <origin xyz="0.00514 0.00023 0.42524" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.01448 0.94935 1.16925"/>
+        </geometry>
+      </collision>
+      <collision name="camera_top_col">
+        <origin xyz="0.11195 0.0019 1.25215" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.06976" length="0.25"/>
+        </geometry>
+      </collision>
+      <collision name="chassis_col">
+        <origin xyz="0.01121 0.00023 0.02431" rpy="0 0 0"/>
+        <geometry>
+          <box size="1.9958 0.72 0.35508"/>
+        </geometry>
+      </collision>
+    
+    </link>
+
+    <link name="drive_motor_lb">
+      <inertial>
+        <origin xyz="-0.00105 0.08331 0.05321" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09492" ixy="6e-05" ixz="8e-05" iyy="0.03042" iyz="-0.00181" izz="0.09704"/>
+      </inertial>
+      <visual name="drive_motor_lb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_lb_col">
+        <origin xyz="0 0.09943 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.34444 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_lf">
+      <inertial>
+        <origin xyz="0.00102 0.07894 0.05182" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09256" ixy="0" ixz="4e-05" iyy="0.03047" iyz="-0.00143" izz="0.09479"/>
+      </inertial>
+      <visual name="drive_motor_lf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_lf_col">
+        <origin xyz="0 0.08243 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.31044 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_rb">
+      <inertial>
+        <origin xyz="-0.00156 -0.08306 0.05155" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.0948" ixy="3e-05" ixz="-4e-05" iyy="0.03031" iyz="0.00155" izz="0.09706"/>
+      </inertial>
+      <visual name="drive_motor_rb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_rb_col">
+        <origin xyz="0 -0.09943 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.34444 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_rf">
+      <inertial>
+        <origin xyz="0.00053 -0.08238 0.0526" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09367" ixy="0" ixz="4e-05" iyy="0.03055" iyz="0.00168" izz="0.09585"/>
+      </inertial>
+      <visual name="drive_motor_rf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_rf_col">
+        <origin xyz="0 -0.08243 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.31044 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lb_1">
+      <inertial>
+        <origin xyz="0.05551 0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="2e-05" ixz="2e-05" iyy="0.00016" iyz="-0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_lb_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lb_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lb_1_col">
+        <origin xyz="0.0564 0.02221 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lb_2">
+      <inertial>
+        <origin xyz="-0.00989 -0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_lb_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lb_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lb_2_col">
+        <origin xyz="-0.01732 -0.00682 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lf_1">
+      <inertial>
+        <origin xyz="0.05551 0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="2e-05" ixz="2e-05" iyy="0.00016" iyz="-0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_lf_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lf_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lf_1_col">
+        <origin xyz="0.0564 0.02221 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lf_2">
+      <inertial>
+        <origin xyz="-0.00989 -0.00389 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_lf_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lf_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lf_2_col">
+        <origin xyz="-0.01732 -0.00682 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rb_1">
+      <inertial>
+        <origin xyz="0.05551 -0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="-2e-05" ixz="2e-05" iyy="0.00016" iyz="0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_rb_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rb_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rb_1_col">
+        <origin xyz="0.0564 -0.02221 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rb_2">
+      <inertial>
+        <origin xyz="-0.00989 0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_rb_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rb_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rb_2_col">
+        <origin xyz="-0.01732 0.00682 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rf_1">
+      <inertial>
+        <origin xyz="0.05551 -0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="-2e-05" ixz="2e-05" iyy="0.00016" iyz="0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_rf_1_vis">
+        <origin xyz="-0.00212 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rf_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rf_1_col">
+        <origin xyz="0.0564 -0.02221 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rf_2">
+      <inertial>
+        <origin xyz="-0.00989 0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_rf_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rf_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rf_2_col">
+        <origin xyz="-0.01732 0.00682 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0855"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_lb">
+      <inertial>
+        <origin xyz="-0.08769 0.29243 0.00302" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31565" ixy="-0.00098" ixz="-0.00177" iyy="0.16606" iyz="0.03697" izz="0.18926"/>
+      </inertial>
+      <visual name="steering_strut_lb_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_lb_col">
+        <origin xyz="-0.13494 0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_lf">
+      <inertial>
+        <origin xyz="-0.08804 0.29249 -0.0033" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31482" ixy="0.001" ixz="0.00195" iyy="0.16594" iyz="0.03691" izz="0.18863"/>
+      </inertial>
+      <visual name="steering_strut_lf_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_lf_col">
+        <origin xyz="-0.13494 0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_rb">
+      <inertial>
+        <origin xyz="-0.08813 -0.29272 0.00331" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31515" ixy="-0.001" ixz="0.00196" iyy="0.16587" iyz="-0.03697" izz="0.18903"/>
+      </inertial>
+      <visual name="steering_strut_rb_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_rb_col">
+        <origin xyz="-0.13494 -0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_rf">
+      <inertial>
+        <origin xyz="-0.08814 -0.29281 -0.00283" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.3161" ixy="0.00093" ixz="-0.00165" iyy="0.16581" iyz="-0.03733" izz="0.18996"/>
+      </inertial>
+      <visual name="steering_strut_rf_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_rf_col">
+        <origin xyz="-0.13494 -0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_lb">
+      <inertial>
+        <origin xyz="3e-05 0.00876 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35771" ixy="0" ixz="2e-05" iyy="0.56131" iyz="0" izz="0.35768"/>
+      </inertial>
+      <visual name="wheel_lb_vis">
+        <origin xyz="-1e-05 0.00056 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_lb_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_lf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35711" ixy="0" ixz="-2e-05" iyy="0.56069" iyz="0" izz="0.35709"/>
+      </inertial>
+      <visual name="wheel_lf_vis">
+        <origin xyz="6e-05 -0.00772 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_lf_col">
+        <origin xyz="3e-05 -0.00814 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rb">
+      <inertial>
+        <origin xyz="3e-05 -0.00876 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35771" ixy="0" ixz="-2e-05" iyy="0.56131" iyz="0" izz="0.35768"/>
+      </inertial>
+      <visual name="wheel_rb_vis">
+        <origin xyz="-1e-05 -0.00055 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_rb_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rf">
+      <inertial>
+        <origin xyz="-3e-05 -0.00814 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35711" ixy="0" ixz="2e-05" iyy="0.56069" iyz="0" izz="0.35709"/>
+      </inertial>
+      <visual name="wheel_rf_vis">
+        <origin xyz="3e-05 -0.00041 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_rf.vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_rf_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- ### JOINTS ### -->
+
+    <joint name="base_footprint_to_chassis" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="base_footprint"/>
+      <child link="chassis"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_lb_to_drive_motor_lb" type="revolute">
+      <origin xyz="-0.07688 0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_lb"/>
+      <child link="drive_motor_lb"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_lf_to_drive_motor_lf" type="revolute">
+      <origin xyz="-0.07688 0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_lf"/>
+      <child link="drive_motor_lf"/>
+      <axis xyz="0 0 -1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_rb_to_drive_motor_rb" type="revolute">
+      <origin xyz="-0.07688 -0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_rb"/>
+      <child link="drive_motor_rb"/>
+      <axis xyz="0 0 -1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_rf_to_drive_motor_rf" type="revolute">
+      <origin xyz="-0.07688 -0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_rf"/>
+      <child link="drive_motor_rf"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <joint name="chassis_to_shock_lb_1" type="continuous">
+      <origin xyz="-0.8202 0.10995 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_lb_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_lb_to_shock_lb_2" type="continuous">
+      <origin xyz="-0.02 0.114 -0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_lb"/>
+      <child link="shock_lb_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_lf_1" type="continuous">
+      <origin xyz="0.84304 0.10995 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_lf_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_lf_to_shock_lf_2" type="continuous">
+      <origin xyz="-0.02 0.114 0.00043" rpy="0 0 0"/>
+      <parent link="steering_strut_lf"/>
+      <child link="shock_lf_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_rb_1" type="continuous">
+      <origin xyz="-0.8202 -0.1095 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_rb_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_rb_to_shock_rb_2" type="continuous">
+      <origin xyz="-0.02 -0.114 -0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_rb"/>
+      <child link="shock_rb_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_rf_1" type="continuous">
+      <origin xyz="0.84304 -0.1095 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_rf_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_rf_to_shock_rf_2" type="continuous">
+      <origin xyz="-0.02 -0.114 0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_rf"/>
+      <child link="shock_rf_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_steering_strut_lb" type="continuous">
+      <origin xyz="-0.81976 0.05092 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_lb"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_lf" type="continuous">
+      <origin xyz="0.8426 0.05092 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_lf"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_rb" type="continuous">
+      <origin xyz="-0.81976 -0.05047 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_rb"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_rf" type="continuous">
+      <origin xyz="0.8426 -0.05047 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_rf"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="drive_motor_lb_to_wheel_lb" type="continuous">
+      <origin xyz="0 0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_lb"/>
+      <child link="wheel_lb"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="20.0" velocity="200.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_lf_to_wheel_lf" type="continuous">
+      <origin xyz="-3e-05 0.23811 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_lf"/>
+      <child link="wheel_lf"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="20.0" velocity="200.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_rb_to_wheel_rb" type="continuous">
+      <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_rb"/>
+      <child link="wheel_rb"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="20.0" velocity="200.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_rf_to_wheel_rf" type="continuous">
+      <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_rf"/>
+      <child link="wheel_rf"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="20.0" velocity="200.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <!-- ### SENSORS LINKS ### -->
+    <!-- <link name="d435_cb"> -->
+      <!-- <inertial> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <mass value="0.001"/> -->
+        <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+      <!-- </inertial> -->
+      <!-- <visual name="d435_cb_vis"> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://m2_description/meshes/dae/d455_cb_vis.dae" scale="1.0 1.0 1.0"/> -->
+        <!-- </geometry> -->
+        <!-- <material name="dummy_mat"/> -->
+      <!-- </visual> -->
+      <!-- <collision name="d435_cb_col"> -->
+        <!-- <origin xyz="0 0 0.00582" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <box size="0.124 0.029 0.026"/> -->
+        <!-- </geometry> -->
+      <!-- </collision> -->
+    <!-- </link> -->
+
+    <!-- <link name="d435_cf"> -->
+      <!-- <inertial> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <mass value="0.001"/> -->
+        <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+      <!-- </inertial> -->
+      <!-- <visual name="d435_cf_vis"> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://m2_description/meshes/dae/d455_cf_vis.dae" scale="1.0 1.0 1.0"/> -->
+        <!-- </geometry> -->
+        <!-- <material name="dummy_mat"/> -->
+      <!-- </visual> -->
+      <!-- <collision name="d435_cf_col"> -->
+        <!-- <origin xyz="0 0 0.00582" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <box size="0.124 0.029 0.026"/> -->
+        <!-- </geometry> -->
+      <!-- </collision> -->
+    <!-- </link> -->
+
+    <!-- <link name="d435_lf"> -->
+      <!-- <inertial> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <mass value="0.001"/> -->
+        <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+      <!-- </inertial> -->
+      <!-- <visual name="d435_lf_vis"> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://m2_description/meshes/dae/d455_lf_vis.dae" scale="1.0 1.0 1.0"/> -->
+        <!-- </geometry> -->
+        <!-- <material name="dummy_mat"/> -->
+      <!-- </visual> -->
+      <!-- <collision name="d435_lf_col"> -->
+        <!-- <origin xyz="0 0 0.00583" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <box size="0.124 0.029 0.026"/> -->
+        <!-- </geometry> -->
+      <!-- </collision> -->
+    <!-- </link> -->
+
+    <!-- <link name="d435_rf"> -->
+      <!-- <inertial> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <mass value="0.001"/> -->
+        <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+      <!-- </inertial> -->
+      <!-- <visual name="d435_rf_vis"> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://m2_description/meshes/dae/d455_rf_vis.dae" scale="1.0 1.0 1.0"/> -->
+        <!-- </geometry> -->
+        <!-- <material name="dummy_mat"/> -->
+      <!-- </visual> -->
+      <!-- <collision name="d435_rf_col"> -->
+        <!-- <origin xyz="0 0 0.00582" rpy="0 0 0"/> -->
+        <!-- <geometry> -->
+          <!-- <box size="0.124 0.029 0.026"/> -->
+        <!-- </geometry> -->
+      <!-- </collision> -->
+    <!-- </link> -->
+    
+    <link name="garmin_cb">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_cb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_cb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_cb_col">
+        <origin xyz="-0.0108 -5e-05 0.00068" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="garmin_cf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_cf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_cf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_cf_col">
+        <origin xyz="-0.0062 -4e-05 -0.00028" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="garmin_lb">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_lb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_lb_col">
+        <origin xyz="-0.0062 -4e-05 -0.00028" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="garmin_lf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_lf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_lf_col">
+        <origin xyz="-0.0062 -4e-05 -0.00028" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="garmin_rb">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_rb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_rb_col">
+        <origin xyz="-0.0108 -5e-05 0.00068" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="garmin_rf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="garmin_rf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/garmin_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="garmin_rf">
+        <origin xyz="-0.0062 -4e-05 -0.00028" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07063 0.02413 0.0212"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mono_cam_120_lf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="mono_cam_120_lf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/mono_cam_120_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="mono_cam_120_lf_col">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.00693 0.04 0.04"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mono_cam_120_rf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="mono_cam_120_rf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/mono_cam_120_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="mono_cam_120_rf">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.04 0.00693 0.04"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mono_cam_120_cf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="mono_cam_120_cf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/mono_cam_120_cf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="mono_cam_120_cf_col">
+        <origin xyz="0.00052 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.00693 0.04 0.04"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mono_cam_170_cb">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="mono_cam_170_cb_vis">
+        <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/mono_cam_170_cb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="mono_cam_120_cf">
+        <origin xyz="-0.00052 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <box size="0.04 0.04 0.00693"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="umr_f">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="umr_f_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/umr_f_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="umr_f_col">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1038 0.08 0.02445"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="umr_l">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="umr_l_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/umr_l_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="umr_l_col">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1038 0.08 0.02445"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="umr_r">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="umr_r_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/umr_r_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="dummy_mat"/>
+      </visual>
+      <collision name="umr_r_col">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1038 0.08 0.02445"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="vlp16_front">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="vlp16_front_vis">
+        <origin xyz="0 0 0.02367" rpy="1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/vlp16_front_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="LiDAR_grey"/>
+      </visual>
+      <collision name="vlp16_front">
+        <origin xyz="0.00129 -0.00014 0.02367" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.05164" length="0.07275"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="vlp32_top">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="vlp32_top_vis">
+        <origin xyz="0 0 0" rpy="1.5708 3.141 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/vlp32_top_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="LiDAR_grey"/>
+      </visual>
+      <collision name="vlp32_top">
+        <origin xyz="0.00144 2e-05 0.032" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.05164" length="0.08686"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- ### SENSORS JOINTS ### -->
+    <!-- <joint name="d435_cb" type="fixed"> -->
+      <!-- <origin xyz="-0.54585 0.00023 0.37977" rpy="1.5708 0 -1.5708"/> -->
+      <!-- <parent link="chassis"/> -->
+      <!-- <child link="d435_cb"/> -->
+    <!-- </joint> -->
+
+    <!-- <joint name="d435_cf" type="fixed"> -->
+      <!-- <origin xyz="0.62086 0.00023 0.56041" rpy="1.5708 0 1.5708"/> -->
+      <!-- <parent link="chassis"/> -->
+      <!-- <child link="d435_cf"/> -->
+    <!-- </joint> -->
+
+    <!-- <joint name="d435_lf" type="fixed"> -->
+      <!-- <origin xyz="0.40789 0.33724 0.56041" rpy="1.5708 0 2.99147"/> -->
+      <!-- <parent link="chassis"/> -->
+      <!-- <child link="d435_lf"/> -->
+    <!-- </joint> -->
+
+    <!-- <joint name="d435_rf" type="fixed"> -->
+      <!-- <origin xyz="0.40789 -0.33679 0.56041" rpy="1.5708 0 0.15708"/> -->
+      <!-- <parent link="chassis"/> -->
+      <!-- <child link="d435_rf"/> -->
+    <!-- </joint> -->
+
+    <joint name="garmin_cb" type="fixed">
+      <origin xyz="-0.55169 0.00023 0.34706" rpy="-1.87977 0 1.5708"/>
+      <parent link="chassis"/>
+      <child link="garmin_cb"/>
+    </joint>
+
+    <joint name="garmin_cf" type="fixed">
+      <origin xyz="0.61913 0.00023 0.47175" rpy="2.16421 0 1.5708"/>
+      <parent link="chassis"/>
+      <child link="garmin_cf"/>
+    </joint>
+
+    <joint name="garmin_lb" type="fixed">
+      <origin xyz="-0.9469 0.23679 0.0847" rpy="1.5708 0 -2.18166"/>
+      <parent link="chassis"/>
+      <child link="garmin_lb"/>
+    </joint>
+
+    <joint name="garmin_lf" type="fixed">
+      <origin xyz="0.97753 0.20102 0.02173" rpy="-1.5708 0 -0.60666"/>
+      <parent link="chassis"/>
+      <child link="garmin_lf"/>
+    </joint>
+
+    <joint name="garmin_rb" type="fixed">
+      <origin xyz="-0.9469 -0.23634 0.0847" rpy="1.5708 0 -0.95993"/>
+      <parent link="chassis"/>
+      <child link="garmin_rb"/>
+    </joint>
+
+    <joint name="garmin_rf" type="fixed">
+      <origin xyz="0.97753 -0.20056 0.02173" rpy="1.5708 0 0.61087"/>
+      <parent link="chassis"/>
+      <child link="garmin_rf"/>
+    </joint>
+
+    <joint name="mono_cam_120_lf" type="fixed">
+      <origin xyz="0.37999 0.36146 0.60054" rpy="0 0 1.41372"/>
+      <parent link="chassis"/>
+      <child link="mono_cam_120_lf"/>
+    </joint>
+
+    <joint name="mono_cam_120_rf" type="fixed">
+      <origin xyz="0.37999 -0.361 0.60054" rpy="0 0 -1.41372"/>
+      <parent link="chassis"/>
+      <child link="mono_cam_120_rf"/>
+    </joint>
+
+    <joint name="mono_cam_120_cf" type="fixed">
+      <origin xyz="0.63741 0.00023 0.60054" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="mono_cam_120_cf"/>
+    </joint>
+
+    <joint name="mono_cam_170_cb" type="fixed">
+      <origin xyz="-0.56492 -0.00024 0.41983" rpy="0 0 3.141"/>
+      <parent link="chassis"/>
+      <child link="mono_cam_170_cb"/>
+    </joint>
+
+    <joint name="umr_f" type="fixed">
+      <origin xyz="0.24173 0.00482 0.93391" rpy="1.5708 0 1.5708"/>
+      <parent link="chassis"/>
+      <child link="umr_f"/>
+    </joint>
+
+    <joint name="umr_l" type="fixed">
+      <origin xyz="0.01218 0.07068 0.93391" rpy="1.5708 0 -2.61799"/>
+      <parent link="chassis"/>
+      <child link="umr_l"/>
+    </joint>
+
+    <joint name="umr_r" type="fixed">
+      <origin xyz="0.01807 -0.07124 0.93391" rpy="1.5708 0 -0.5236"/>
+      <parent link="chassis"/>
+      <child link="umr_r"/>
+    </joint>
+
+    <joint name="vlp16_front" type="fixed">
+      <origin xyz="0.53676 0.00037 0.70861" rpy="0 0.46426 0"/>
+      <parent link="chassis"/>
+      <child link="vlp16_front"/>
+    </joint>
+
+    <joint name="vlp32_top" type="fixed">
+      <origin xyz="0.11051 0.0014 1.04234" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="vlp32_top"/>
+    </joint>
+
+    <!-- ### TRANSMISSIONS ### -->
+    <transmission name="wheel_rf">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="drive_motor_rf_to_wheel_rf">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wheel_rf">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="wheel_lf">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="drive_motor_lf_to_wheel_lf">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wheel_lf">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="wheel_rb">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="drive_motor_rb_to_wheel_rb">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wheel_rb">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="wheel_lb">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="drive_motor_lb_to_wheel_lb">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wheel_lb">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="steering_rf">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="steering_strut_rf_to_drive_motor_rf">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="steering_rf">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+
+    <transmission name="steering_lf">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="steering_strut_lf_to_drive_motor_lf">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="steering_lf">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="steering_rb">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="steering_strut_rb_to_drive_motor_rb">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="steering_rb">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="steering_lb">
+      <type>transmission_interface/SimpleTransmission</type>
+        <joint name="steering_strut_lb_to_drive_motor_lb">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="steering_lb">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <gazebo reference="wheel_lf">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="wheel_rf">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_lb">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="wheel_rb">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo>
+      
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <!-- <robotNamespace>/m2</robotNamespace> -->
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+
+      <joint name="shock_lf" type="prismatic">
+        <child>shock_lf_1</child>
+        <parent>shock_lf_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_lb" type="prismatic">
+        <child>shock_lb_1</child>
+        <parent>shock_lb_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_rf" type="prismatic">
+        <child>shock_rf_1</child>
+        <parent>shock_rf_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_rb" type="prismatic">
+        <child>shock_rb_1</child>
+        <parent>shock_rb_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+    </gazebo>
+
+    <gazebo reference="mono_cam_120_lf">
+        <!-- <gravity>false</gravity> -->
+        <sensor type="camera" name="mono_cam_120_lf">
+            <update_rate>30.0</update_rate>
+            <visualize>true</visualize>
+            <camera name="mono_cam_120_lf">
+                <horizontal_fov>2.094395102</horizontal_fov>
+                <image>
+                    <width>3840</width>
+                    <height>2160</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.002</near>
+                    <far>3000</far>
+                </clip>
+                <noise>
+                    <!-- <type>gaussian</type> -->
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>mono_cam_120_lf</cameraName>
+                <imageTopicName>mono_cam_120_lf/image_raw</imageTopicName>
+                <cameraInfoTopicName>mono_cam_120_lf/camera_info</cameraInfoTopicName>
+                <frameName>mono_cam_120_lf</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="mono_cam_120_rf">
+        <!-- <gravity>false</gravity> -->
+        <sensor type="camera" name="mono_cam_120_rf">
+            <update_rate>30.0</update_rate>
+            <visualize>true</visualize>
+            <camera name="mono_cam_120_rf">
+                <horizontal_fov>2.094395102</horizontal_fov>
+                <image>
+                    <width>3840</width>
+                    <height>2160</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.002</near>
+                    <far>3000</far>
+                </clip>
+                <noise>
+                    <!-- <type>gaussian</type> -->
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>mono_cam_120_rf</cameraName>
+                <imageTopicName>mono_cam_120_rf/image_raw</imageTopicName>
+                <cameraInfoTopicName>mono_cam_120_rf/camera_info</cameraInfoTopicName>
+                <frameName>mono_cam_120_rf</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="mono_cam_120_cf">
+        <!-- <gravity>false</gravity> -->
+        <sensor type="camera" name="mono_cam_120_cf">
+            <update_rate>30.0</update_rate>
+            <visualize>true</visualize>
+            <camera name="mono_cam_120_cf">
+                <horizontal_fov>2.094395102</horizontal_fov>
+                <image>
+                    <width>3840</width>
+                    <height>2160</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.002</near>
+                    <far>3000</far>
+                </clip>
+                <noise>
+                    <!-- <type>gaussian</type> -->
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>mono_cam_120_cf</cameraName>
+                <imageTopicName>mono_cam_120_cf/image_raw</imageTopicName>
+                <cameraInfoTopicName>mono_cam_120_cf/camera_info</cameraInfoTopicName>
+                <frameName>mono_cam_120_cf</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="mono_cam_170_cb">
+        <!-- <gravity>false</gravity> -->
+        <sensor type="camera" name="mono_cam_170_cb">
+            <update_rate>30.0</update_rate>
+            <visualize>true</visualize>
+            <camera name="mono_cam_170_cb">
+                <horizontal_fov>2.967059728</horizontal_fov>
+                <image>
+                    <width>3840</width>
+                    <height>2160</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.002</near>
+                    <far>3000</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>mono_cam_170_cb</cameraName>
+                <imageTopicName>mono_cam_170_cb/image_raw</imageTopicName>
+                <cameraInfoTopicName>mono_cam_170_cb/camera_info</cameraInfoTopicName>
+                <frameName>mono_cam_170_cb</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_cb">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_cb">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>200</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <max>10.0</max>
+                <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_cb/scan</topicName>
+                <frameName>garmin_cb</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_cf">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_cf">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <!-- ?????? Not in specs-->
+                        <samples>4</samples> 
+                        <resolution>1</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <!-- UNITSSSS  ??????? -->
+                <max>10000000.0</max>  
+                <resolution>0.01</resolution>
+                </range>
+                <!-- <noise> -->
+                    <!-- <type>gaussian</type> -->
+                    <!-- <mean>0.0</mean> -->
+                    <!-- <stddev>0.01</stddev> -->
+                <!-- </noise> -->
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_cf/scan</topicName>
+                <frameName>garmin_cf</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_lb">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_lb">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>200</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <max>10.0</max>
+                <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_lb/scan</topicName>
+                <frameName>garmin_lb</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_lf">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_lf">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>200</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <max>10.0</max>
+                <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_lf/scan</topicName>
+                <frameName>garmin_lf</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_rb">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_rb">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>200</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <max>10.0</max>
+                <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_rb/scan</topicName>
+                <frameName>garmin_rb</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="garmin_rf">
+        <!-- <kinematic>true</kinematic> -->
+        <!-- <gravity>false</gravity>     -->
+        <sensor type="ray" name="garmin_rf">
+            <!-- <pose>0 0 0 0 0 0</pose> -->
+            <visualize>true</visualize>
+            <update_rate>200</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>4</samples>
+                        <resolution>0.01</resolution>
+                        <min_angle>-0.042</min_angle>
+                        <max_angle>0.042</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                <min>0.01</min>
+                <max>1000.0</max>
+                <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>garmin_rf/scan</topicName>
+                <frameName>garmin_rf</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="vlp16_front">
+      <!-- <xacro:if value="${gpu}"> -->
+        <sensor type="gpu_ray" name="vlp16_front">
+          <pose>0 0 0 0 0 0</pose>
+          <visualize>1</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1875</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.1415926535897931</min_angle>
+                <max_angle>3.1415926535897931</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>16</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.261799388</min_angle>
+                <max_angle> 0.261799388</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.3</min>
+              <max>100.0</max>
+              <resolution>0.001</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.0</stddev>
+            </noise>
+          </ray>
+          <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_gpu_laser.so">
+            <topicName>/vlp16/velodyne_points</topicName>
+            <frameName>vlp16_front</frameName>
+            <organize_cloud>false</organize_cloud>
+            <min_range>0.9</min_range>
+            <max_range>100.0</max_range>
+            <gaussianNoise>0.008</gaussianNoise>
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="vlp32_top">
+      <!-- <xacro:if value="${gpu}"> -->
+        <sensor type="gpu_ray" name="vlp32_top">
+          <pose>0 0 0 0 0 0</pose>
+          <visualize>1</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1875</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.1415926535897931</min_angle>
+                <max_angle>3.1415926535897931</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>32</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.436332313</min_angle>
+                <max_angle> 0.261799388</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.3</min>
+              <max>200.0</max>
+              <resolution>0.001</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.0</stddev>
+            </noise>
+          </ray>
+          <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_gpu_laser.so">
+            <topicName>/vlp32/velodyne_points</topicName>
+            <frameName>vlp32_top</frameName>
+            <organize_cloud>false</organize_cloud>
+            <min_range>0.9</min_range>
+            <max_range>200.0</max_range>
+            <gaussianNoise>0.008</gaussianNoise>
+          </plugin>
+        </sensor>
+    </gazebo>
+
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+    <sensor_d435 parent="chassis" name="d435_cf" topics_ns="d435_cf">
+      <origin xyz="0.62086 0.00023 0.56041" rpy="0 0 0"/>
+    </sensor_d435>
+    
+    <sensor_d435 parent="chassis" name="d435_cb" topics_ns="d435_cb">
+      <origin xyz="-0.54585 0.00023 0.37977" rpy="0 0 3.141"/>
+    </sensor_d435>
+    
+    <sensor_d435 parent="chassis" name="d435_lf" topics_ns="d435_lf">
+      <origin xyz="0.40789 0.33724 0.56041" rpy="0 0 1.48367"/>
+    </sensor_d435>
+    
+    <sensor_d435 parent="chassis" name="d435_rf" topics_ns="d435_rf">
+      <origin xyz="0.40789 -0.33679 0.56041" rpy="0 0 -1.48367"/>
+    </sensor_d435>
+    
+</robot>

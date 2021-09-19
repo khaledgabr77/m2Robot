@@ -1,0 +1,21 @@
+left_front_wheel:
+  steering_link_name: left_front_wheel
+  steering_controller_name: steering_lf_ctrlr
+  axle_controller_name: wheel_lf_ctrlr
+  diameter: 0.448
+
+right_front_wheel:
+  steering_link_name: right_front_wheel
+  steering_controller_name: steering_rf_ctrlr
+  axle_controller_name: wheel_rf_ctrlr
+  diameter: 0.448
+
+left_back_wheel:
+  link_name: left_back_wheel
+  axle_controller_name: wheel_lb_ctrlr
+  diameter: 0.448
+
+right_back_wheel:
+  link_name: right_back_wheel
+  axle_controller_name: wheel_rb_ctrlr
+  diameter: 0.448

@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis">
+  <!-- Base Properties -->
+  <xacro:property name="mass_base" value="340" />
+  <xacro:property name="base_x_size" value="0.66000" />
+  <xacro:property name="base_y_size" value="0.60000" />
+  <xacro:property name="base_z_size" value="0.16000" />
+
+  <xacro:property name="wheelbase" value="1.9" />
+  <xacro:property name="track" value="1.1" />
+
+  <xacro:macro name="chassis">
+    <!-- Base footprint is on the ground under the robot -->
+    <link name="base_footprint"/>
+
+    <gazebo reference="base_link">
+      <material>Gazebo/Grey</material>
+    </gazebo>
+    <!-- Base link is the center of the robot's bottom plate -->
+    <link name="base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${base_x_size} ${base_y_size} ${base_z_size}"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.6 0.6 0.6 1"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="${base_x_size} ${base_y_size} ${base_z_size}"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="base_footprint_joint" type="fixed">
+      <origin xyz="0 0 ${ground_clearance + base_z_size/2}" rpy="0 0 0" />
+      <child link="base_link" />
+      <parent link="base_footprint" />
+    </joint>
+
+    <!-- Interial link stores the robot's inertial information -->
+    <link name="inertial_link">
+      <inertial>
+        <mass value="340" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="${mass_base/12.0 * (base_y_size*base_y_size + base_z_size*base_z_size)}" ixy="0" ixz="0"
+                 iyy="${mass_base/12.0 * (base_x_size*base_x_size + base_z_size*base_z_size)}" iyz="0"
+                 izz="${mass_base/12.0 * (base_y_size*base_y_size + base_x_size*base_x_size)}" />
+      </inertial>
+    </link>
+
+    <joint name="inertial_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="base_link" />
+      <child link="inertial_link" />
+    </joint>
+    
+
+    <material name="LiDAR_grey">
+      <color rgba="0.59608 0.59608 0.59608 1.0"/>
+    </material>
+
+    <material name="Metal_Bling chrome">
+      <color rgba="0.8 0.8 0.82431 1.0"/>
+    </material>
+
+    <material name="Synth_Tyre rubber">
+      <color rgba="0.01678 0.01212 0.01212 1.0"/>
+    </material>
+
+    <material name="blue_police_light">
+      <color rgba="0 0 1.0 1.0"/>
+    </material>
+
+    <material name="body_black">
+      <color rgba="0.10594 0.10594 0.10594 1.0"/>
+    </material>
+
+    <material name="body_grey">
+      <color rgba="0.96 0.96 0.96 1.0"/>
+    </material>
+
+    <material name="red_police_light">
+      <color rgba="1.0 0 0 1.0"/>
+    </material>
+
+    <material name="white_police_light">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <material name="dummy_mat">
+      <color rgba="0.4 0.4 0.4 1.0"/>
+    </material>
+      
+    
+    <link name="chassis_m2">
+      <inertial>
+        <origin xyz="0.08838 -0.00198 0.17552" rpy="0 0 0"/>
+        <mass value="200.0"/>
+        <inertia ixx="24.43942" ixy="-3.57208" ixz="-2.64293" iyy="116.11656" iyz="0.10486" izz="111.43803"/>
+      </inertial>
+      
+      <visual name="body_front_lights_vis">
+        <origin xyz="0.98421 0.00023 0.09713" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_front_lights_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_lights_blue_vis">
+        <origin xyz="0.37794 0.18642 0.7649" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_blue_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="blue_police_light"/>
+      </visual>
+      <visual name="body_lights_red_vis">
+        <origin xyz="0.37978 -0.18222 0.76491" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_red_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="red_police_light"/>
+      </visual>
+      <visual name="body_lights_white_vis">
+        <origin xyz="0.40793 0.00023 0.7689" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_white_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_vis">
+        <origin xyz="0.07415 0.00012 0.24822" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      <visual name="camera_top_vis">
+        <origin xyz="0.11195 0.00142 1.30874" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/camera_top_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="chassis_vis">
+        <origin xyz="0.01034 -3e-05 0.00065" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/chassis_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <visual name="text_body_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="text_front_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_front_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      
+      <collision name="body_col">
+        <origin xyz="0.00514 0.00023 0.42524" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.01448 0.94935 1.16925"/>
+        </geometry>
+      </collision>
+      <collision name="camera_top_col">
+        <origin xyz="0.11195 0.0019 1.25215" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.06976" length="0.25"/>
+        </geometry>
+      </collision>
+      <collision name="chassis_col">
+        <origin xyz="0.01121 0.00023 0.02431" rpy="0 0 0"/>
+        <geometry>
+          <box size="1.9958 0.72 0.35508"/>
+        </geometry>
+      </collision>
+    </link>    
+    
+    <joint name="base_footprint_to_chassis" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="chassis_m2"/>
+    </joint>
+    
+
+    
+
+    
+
+  </xacro:macro>
+</robot>

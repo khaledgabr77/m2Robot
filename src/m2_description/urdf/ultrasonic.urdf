@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot name="ultrasonic">
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+    
+    <link name="base_link"/>
+    
+    <link name="ultrasonic">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.2"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.2"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <joint name="fixed" type="fixed">
+        <parent link="base_link"/>
+        <child link="ultrasonic"/>
+    </joint>
+
+    <gazebo reference="ultrasonic">
+        <kinematic>true</kinematic>
+        <gravity>false</gravity>
+        <sensor type="sonar" name="sonar">
+            <pose>0 0 0 0 0 0</pose>
+            <!-- <visualize>0</visualize> -->
+            <!-- <update_rate>30.0</update_rate> -->
+            <sonar>
+                <geometry>sphere</geometry>
+                <min>0.01</min>
+                <max>6.0</max>
+                <!-- <radius>8</radius> -->
+                <!-- <radius>22.392304845</radius> -->
+            </sonar>
+            <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>30.0</updateRate>
+                <topicName>/sonar</topicName>
+                <frameName>ultrasonic</frameName>
+                <fov>1.308996939</fov>
+                <radiation>ultrasound</radiation>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>
