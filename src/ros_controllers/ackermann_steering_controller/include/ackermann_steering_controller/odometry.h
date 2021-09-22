@@ -40,8 +40,8 @@
  * Author: Masaru Morita
  */
 
-#pragma once
-
+#ifndef ODOMETRY_ACKERMANN_STEERING_H_
+#define ODOMETRY_ACKERMANN_STEERING_H_
 
 #include <ros/time.h>
 #include <boost/accumulators/accumulators.hpp>
@@ -206,3 +206,5 @@ namespace ackermann_steering_controller
     IntegrationFunction integrate_fun_;
   };
 }
+
+#endif /* ODOMETRY_ACKERMANN_STEERING_H_ */

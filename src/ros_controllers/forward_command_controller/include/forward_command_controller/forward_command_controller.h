@@ -1,3 +1,4 @@
+
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
@@ -34,8 +35,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef FORWARD_COMMAND_CONTROLLER_FORWARD_COMMAND_CONTROLLER_H
+#define FORWARD_COMMAND_CONTROLLER_FORWARD_COMMAND_CONTROLLER_H
 
 #include <ros/node_handle.h>
 #include <hardware_interface/joint_command_interface.h>
@@ -96,3 +97,5 @@ private:
 };
 
 }
+
+#endif

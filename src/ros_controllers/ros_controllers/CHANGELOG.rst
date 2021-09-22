@@ -2,33 +2,6 @@
 Changelog for package ros_controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-
-0.18.1 (2020-12-03)
--------------------
-* Update package.xml of ros_controllers meta-package to format 3
-* Contributors: Mateus Amarante Araújo
-
-0.18.0 (2020-10-11)
--------------------
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Contributors: Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-* Remove rqt_joint_trajectory_controller from metapackage (`#443 <https://github.com/ros-controls/ros_controllers/issues/443>`_)
-* Contributors: Matt Reynolds
-
 0.15.0 (2019-03-26)
 -------------------
 

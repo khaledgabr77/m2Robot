@@ -2,34 +2,6 @@
 Changelog for package force_torque_sensor_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-
-0.18.1 (2020-12-03)
--------------------
-* Add missing exec_depend on controller_manager
-* Move floating .launch and .yaml files to launch/ and config/ folders
-* Format package.xml and CMakeLists.txt + clean deps + move pluginlib header to .cpp file
-* Contributors: Mateus Amarante Araújo
-
-0.18.0 (2020-10-11)
--------------------
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Replace header guard with #pragma once
-* Contributors: Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-
 0.15.0 (2019-03-26)
 -------------------
 * Default all controller builds to C++14

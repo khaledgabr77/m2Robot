@@ -36,8 +36,8 @@
  * Author: Enrique Fernández
  */
 
-#pragma once
-
+#ifndef SPEED_LIMITER_H
+#define SPEED_LIMITER_H
 
 namespace diff_drive_controller
 {
@@ -127,3 +127,5 @@ namespace diff_drive_controller
   };
 
 } // namespace diff_drive_controller
+
+#endif // SPEED_LIMITER_H

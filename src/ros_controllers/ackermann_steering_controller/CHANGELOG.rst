@@ -2,56 +2,6 @@
 Changelog for package ackermann_steering_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-* Wait long enough for accumulator to be cleared
-* Contributors: Matt Reynolds
-
-0.18.1 (2020-12-03)
--------------------
-* Use version-agnostic FindBoost for headers
-* Contributors: Matt Reynolds
-
-0.18.0 (2020-10-11)
--------------------
-* Fix dependency on Boost
-* Clean dependencies of diff_drive_controller package
-* Remove (unneeded?) dependencies on rosunit and gtest
-* Format package.xml and CMakeLists.txt according to ros_control pkgs
-* Clean dependencies of ackermann_steering_controller pkg
-* Contributors: Mateus Amarante
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-* Remove gazebo_ros test dependency
-* Contributors: Bence Magyar
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Add missing header guards
-* Replace header guard with #pragma once
-* Prefix every xacro tag with 'xacro:'
-* Modernize xacro
-  - Remove '--inorder'
-  - Use 'xacro' over 'xacro.py'
-* swap implementations of read and write methods
-  Follows the intended use of hardware_interface::RobotHW,
-  see its documentation for details
-* Contributors: Franz, Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-* Fix test for ackermann_steering_controller
-* Use nullptr (`#447 <https://github.com/ros-controls/ros_controllers/issues/447>`_)
-* Update null link pointer error message
-* removed cyclic debug output from ackermann_steering_bot
-* add include directories for tests in {ackermann/four_wheel}_steering_controller
-* Contributors: Bence Magyar, Immanuel Martini, Mathias Lüdtke, Matt Reynolds
-
 0.15.0 (2019-03-26)
 -------------------
 * Default all controller builds to C++14

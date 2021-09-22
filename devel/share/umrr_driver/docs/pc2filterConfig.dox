@@ -1,0 +1,23 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~filter_height" : \b [bool] Enable height filtering. min: False, default: False, max: True
+- \b "~height_min" : \b [double] Filter targets that are lower than value [m]. min: -5.0, default: -5.0, max: 20.0
+- \b "~height_max" : \b [double] Filter targets that are higher than value [m]. min: -5.0, default: 20.0, max: 20.0
+- \b "~filter_rcs" : \b [bool] Enable rcs filtering. min: False, default: False, max: True
+- \b "~rcs_min" : \b [double] Minimal size in [dB]. min: -5.0, default: 0.0, max: 50.0
+- \b "~rcs_max" : \b [double] Maximum size in [dB]. min: 0.0, default: 50.0, max: 50.0
+- \b "~filter_speed" : \b [bool] Enable speed filtering. min: False, default: False, max: True
+- \b "~speed_min" : \b [double] Speed incoming targets [m/s]. min: -111.0, default: -111.0, max: 0.0
+- \b "~speed_max" : \b [double] Speed leaving targets [m/s]. min: 0.0, default: 56.0, max: 56.0
+- \b "~filter_range" : \b [bool] Enable range filtering. min: False, default: False, max: True
+- \b "~range_min" : \b [double] Min Range in [m]. min: 0.0, default: 0.0, max: 175.0
+- \b "~range_max" : \b [double] Max Range in [m].. min: 0.0, default: 175.0, max: 175.0
+- \b "~filter_azimuth" : \b [bool] Enable azimuth filtering. min: False, default: False, max: True
+- \b "~FOV_left" : \b [double] Left angle in deg min: 0.0, default: 90.0, max: 90.0
+- \b "~FOV_right" : \b [double] Right angle in deg min: -90.0, default: -90.0, max: 0.0
+- \b "~filter_elevation" : \b [bool] Enable elevation filtering. min: False, default: False, max: True
+- \b "~FOV_top" : \b [double] Top angle in deg min: 0.0, default: 90.0, max: 90.0
+- \b "~FOV_bottom" : \b [double] Bottom angle in deg min: -90.0, default: -90.0, max: 0.0
+

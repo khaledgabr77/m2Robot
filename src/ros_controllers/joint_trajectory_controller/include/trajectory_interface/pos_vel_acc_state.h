@@ -1,3 +1,4 @@
+
 ///////////////////////////////////////////////////////////////////////////////
 // Copyright (C) 2013, PAL Robotics S.L.
 // Copyright (c) 2008, Willow Garage, Inc.
@@ -28,8 +29,8 @@
 
 /// \author Adolfo Rodriguez Tsouroukdissian
 
-#pragma once
-
+#ifndef TRAJECTORY_INTERFACE_POS_VEL_ACC_STATE_H
+#define TRAJECTORY_INTERFACE_POS_VEL_ACC_STATE_H
 
 #include <vector>
 
@@ -63,14 +64,14 @@ struct PosVelAccState
   PosVelAccState(const typename std::vector<Scalar>::size_type size)
     : position(    std::vector<Scalar>(size, static_cast<Scalar>(0))),
       velocity(    std::vector<Scalar>(size, static_cast<Scalar>(0))),
-      acceleration(std::vector<Scalar>(size, static_cast<Scalar>(0))),
-      time_from_start(static_cast<Scalar>(0))
+      acceleration(std::vector<Scalar>(size, static_cast<Scalar>(0)))
   {}
 
   std::vector<Scalar> position;
   std::vector<Scalar> velocity;
   std::vector<Scalar> acceleration;
-  Scalar time_from_start;
 };
 
 } // namespace
+
+#endif // header guard

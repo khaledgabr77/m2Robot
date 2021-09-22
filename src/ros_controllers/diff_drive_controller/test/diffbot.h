@@ -27,11 +27,9 @@
 
 // NOTE: The contents of this file have been taken largely from the ros_control wiki tutorials
 
-#pragma once
-
-
 // ROS
 #include <ros/ros.h>
+#include <std_msgs/Float64.h>
 #include <std_srvs/Empty.h>
 
 // ros_control
@@ -84,7 +82,18 @@ public:
 
   void read()
   {
-    // Read the joint state of the robot into the hardware interface
+    std::ostringstream os;
+    for (unsigned int i = 0; i < NUM_JOINTS - 1; ++i)
+    {
+      os << cmd_[i] << ", ";
+    }
+    os << cmd_[NUM_JOINTS - 1];
+
+    ROS_INFO_STREAM("Commands for joints: " << os.str());
+  }
+
+  void write()
+  {
     if (running_)
     {
       for (unsigned int i = 0; i < NUM_JOINTS; ++i)
@@ -101,19 +110,6 @@ public:
       std::fill_n(pos_, NUM_JOINTS, std::numeric_limits<double>::quiet_NaN());
       std::fill_n(vel_, NUM_JOINTS, std::numeric_limits<double>::quiet_NaN());
     }
-  }
-
-  void write()
-  {
-    // Write the commands to the joints
-    std::ostringstream os;
-    for (unsigned int i = 0; i < NUM_JOINTS - 1; ++i)
-    {
-      os << cmd_[i] << ", ";
-    }
-    os << cmd_[NUM_JOINTS - 1];
-
-    ROS_INFO_STREAM("Commands for joints: " << os.str());
   }
 
   bool start_callback(std_srvs::Empty::Request& /*req*/, std_srvs::Empty::Response& /*res*/)

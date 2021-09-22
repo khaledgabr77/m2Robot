@@ -1,0 +1,8 @@
+prefix=/home/ahmadelwaly/m2Robot/install
+
+Name: rqt_joint_trajectory_controller
+Description: Description of rqt_joint_trajectory_controller
+Version: 0.15.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

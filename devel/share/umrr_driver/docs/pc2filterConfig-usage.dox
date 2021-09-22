@@ -1,0 +1,24 @@
+\subsubsection usage Usage
+\verbatim
+<node name="pc2_filter" pkg="umrr_driver" type="pc2_filter">
+  <param name="filter_height" type="bool" value="False" />
+  <param name="height_min" type="double" value="-5.0" />
+  <param name="height_max" type="double" value="20.0" />
+  <param name="filter_rcs" type="bool" value="False" />
+  <param name="rcs_min" type="double" value="0.0" />
+  <param name="rcs_max" type="double" value="50.0" />
+  <param name="filter_speed" type="bool" value="False" />
+  <param name="speed_min" type="double" value="-111.0" />
+  <param name="speed_max" type="double" value="56.0" />
+  <param name="filter_range" type="bool" value="False" />
+  <param name="range_min" type="double" value="0.0" />
+  <param name="range_max" type="double" value="175.0" />
+  <param name="filter_azimuth" type="bool" value="False" />
+  <param name="FOV_left" type="double" value="90.0" />
+  <param name="FOV_right" type="double" value="-90.0" />
+  <param name="filter_elevation" type="bool" value="False" />
+  <param name="FOV_top" type="double" value="90.0" />
+  <param name="FOV_bottom" type="double" value="-90.0" />
+</node>
+\endverbatim
+

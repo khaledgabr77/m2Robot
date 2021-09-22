@@ -2,47 +2,6 @@
 Changelog for package four_wheel_steering_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-
-0.18.1 (2020-12-03)
--------------------
-* Remove explicit dependency on Boost::headers to avoid issue `#537 <https://github.com/ros-controls/ros_controllers/issues/537>`_
-* Add boost dependency
-* Format CMakeLists.txt and package.xml files + clean deps of 4ws_controller pkg
-* Contributors: Mateus Amarante, Mateus Amarante Araújo
-
-0.18.0 (2020-10-11)
--------------------
-* Add missing test dependency on xacro in four_wheel_steering_controller
-* Contributors: Mateus Amarante
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Add missing header guards
-* Replace header guard with #pragma once
-* Modernize xacro
-  - Remove '--inorder'
-  - Use 'xacro' over 'xacro.py'
-* swap implementations of read and write methods
-  Follows the intended use of hardware_interface::RobotHW,
-  see its documentation for details
-* Contributors: Franz, Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-* add missing pluginlib deps
-* Use C++11 `std::this_thread::sleep_for`.
-* add include directories for tests in {ackermann/four_wheel}_steering_controller
-* Contributors: Davide Faconti, Mathias Lüdtke, Sean Yen
-
 0.15.0 (2019-03-26)
 -------------------
 * Default all controller builds to C++14

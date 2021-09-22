@@ -38,7 +38,6 @@
 
 #include <cmath>
 #include <diff_drive_controller/diff_drive_controller.h>
-#include <pluginlib/class_list_macros.hpp>
 #include <tf/transform_datatypes.h>
 #include <urdf/urdfdom_compatibility.h>
 #include <urdf_parser/urdf_parser.h>
@@ -53,13 +52,13 @@ static double euclideanOfVectors(const urdf::Vector3& vec1, const urdf::Vector3&
 /*
 * \brief Check that a link exists and has a geometry collision.
 * \param link The link
-* \return true if the link has a collision element with geometry
+* \return true if the link has a collision element with geometry 
 */
 static bool hasCollisionGeometry(const urdf::LinkConstSharedPtr& link)
 {
   if (!link)
   {
-    ROS_ERROR("Link pointer is null.");
+    ROS_ERROR("Link == NULL.");
     return false;
   }
 
@@ -137,7 +136,7 @@ static bool getWheelRadius(const urdf::LinkConstSharedPtr& wheel_link, double& w
     wheel_radius = (static_cast<urdf::Sphere*>(wheel_link->collision->geometry.get()))->radius;
     return true;
   }
-
+  
   ROS_ERROR_STREAM("Wheel link " << wheel_link->name << " is NOT modeled as a cylinder or sphere!");
   return false;
 }
@@ -302,6 +301,8 @@ namespace diff_drive_controller{
                           << ", left wheel radius "  << lwr
                           << ", right wheel radius " << rwr);
 
+    setOdomPubFields(root_nh, controller_nh);
+
     if (publish_cmd_)
     {
       cmd_vel_pub_.reset(new realtime_tools::RealtimePublisher<geometry_msgs::TwistStamped>(controller_nh, "cmd_vel_out", 100));
@@ -341,8 +342,6 @@ namespace diff_drive_controller{
       vel_right_previous_.resize(wheel_joints_size_, 0.0);
     }
 
-    setOdomPubFields(root_nh, controller_nh);
-
     // Get the joint object to use in the realtime loop
     for (size_t i = 0; i < wheel_joints_size_; ++i)
     {
@@ -375,13 +374,8 @@ namespace diff_drive_controller{
     config.publish_rate = publish_rate;
     config.enable_odom_tf = enable_odom_tf_;
 
-    dyn_reconf_server_ = std::make_shared<ReconfigureServer>(dyn_reconf_server_mutex_, controller_nh);
-
-    // Update parameters
-    dyn_reconf_server_mutex_.lock();
+    dyn_reconf_server_ = std::make_shared<ReconfigureServer>(controller_nh);
     dyn_reconf_server_->updateConfig(config);
-    dyn_reconf_server_mutex_.unlock();
-
     dyn_reconf_server_->setCallback(boost::bind(&DiffDriveController::reconfCallback, this, _1, _2));
 
     return true;
@@ -541,12 +535,6 @@ namespace diff_drive_controller{
         return;
       }
 
-      if(!std::isfinite(command.angular.z) || !std::isfinite(command.linear.x))
-      {
-        ROS_WARN_THROTTLE(1.0, "Received NaN in velocity command. Ignoring.");
-        return;
-      }
-
       command_struct_.ang   = command.angular.z;
       command_struct_.lin   = command.linear.x;
       command_struct_.stamp = ros::Time::now();
@@ -643,23 +631,23 @@ namespace diff_drive_controller{
     urdf::JointConstSharedPtr left_wheel_joint(model->getJoint(left_wheel_name));
     urdf::JointConstSharedPtr right_wheel_joint(model->getJoint(right_wheel_name));
 
-    if (!left_wheel_joint)
-    {
-      ROS_ERROR_STREAM_NAMED(name_, left_wheel_name
-                             << " couldn't be retrieved from model description");
-      return false;
-    }
-
-    if (!right_wheel_joint)
-    {
-      ROS_ERROR_STREAM_NAMED(name_, right_wheel_name
-                             << " couldn't be retrieved from model description");
-      return false;
-    }
-
     if (lookup_wheel_separation)
     {
       // Get wheel separation
+      if (!left_wheel_joint)
+      {
+        ROS_ERROR_STREAM_NAMED(name_, left_wheel_name
+                               << " couldn't be retrieved from model description");
+        return false;
+      }
+
+      if (!right_wheel_joint)
+      {
+        ROS_ERROR_STREAM_NAMED(name_, right_wheel_name
+                               << " couldn't be retrieved from model description");
+        return false;
+      }
+
       ROS_INFO_STREAM("left wheel to origin: " << left_wheel_joint->parent_to_joint_origin_transform.position.x << ","
                       << left_wheel_joint->parent_to_joint_origin_transform.position.y << ", "
                       << left_wheel_joint->parent_to_joint_origin_transform.position.z);
@@ -833,5 +821,3 @@ namespace diff_drive_controller{
   }
 
 } // namespace diff_drive_controller
-
-PLUGINLIB_EXPORT_CLASS(diff_drive_controller::DiffDriveController, controller_interface::ControllerBase);

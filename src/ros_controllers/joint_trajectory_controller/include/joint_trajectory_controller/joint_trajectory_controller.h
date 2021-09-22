@@ -28,8 +28,8 @@
 
 /// \author Adolfo Rodriguez Tsouroukdissian, Stuart Glaser
 
-#pragma once
-
+#ifndef JOINT_TRAJECTORY_CONTROLLER_JOINT_TRAJECTORY_CONTROLLER_H
+#define JOINT_TRAJECTORY_CONTROLLER_JOINT_TRAJECTORY_CONTROLLER_H
 
 // C++ standard
 #include <cassert>
@@ -73,8 +73,6 @@
 #include <joint_trajectory_controller/joint_trajectory_segment.h>
 #include <joint_trajectory_controller/init_joint_trajectory.h>
 #include <joint_trajectory_controller/hardware_interface_adapter.h>
-#include <joint_trajectory_controller/hold_trajectory_builder.h>
-#include <joint_trajectory_controller/stop_trajectory_builder.h>
 
 namespace joint_trajectory_controller
 {
@@ -121,7 +119,7 @@ namespace joint_trajectory_controller
  * \endcode
  *
  * \tparam HardwareInterface Controller hardware interface. Currently \p hardware_interface::PositionJointInterface,
- * \p hardware_interface::VelocityJointInterface, and \p hardware_interface::EffortJointInterface are supported
+ * \p hardware_interface::VelocityJointInterface, and \p hardware_interface::EffortJointInterface are supported 
  * out-of-the-box.
  */
 template <class SegmentImpl, class HardwareInterface>
@@ -200,15 +198,11 @@ protected:
 
   typename Segment::State current_state_;         ///< Preallocated workspace variable.
   typename Segment::State desired_state_;         ///< Preallocated workspace variable.
-  typename Segment::State old_desired_state_;     ///< Preallocated workspace variable.
   typename Segment::State state_error_;           ///< Preallocated workspace variable.
   typename Segment::State desired_joint_state_;   ///< Preallocated workspace variable.
   typename Segment::State state_joint_error_;     ///< Preallocated workspace variable.
 
-  std::unique_ptr<TrajectoryBuilder<SegmentImpl> > hold_traj_builder_;
-
   realtime_tools::RealtimeBuffer<TimeData> time_data_;
-  TimeData old_time_data_;
 
   ros::Duration state_publisher_period_;
   ros::Duration action_monitor_period_;
@@ -227,7 +221,7 @@ protected:
   ros::Timer         goal_handle_timer_;
   ros::Time          last_state_publish_time_;
 
-  virtual bool updateTrajectoryCommand(const JointTrajectoryConstPtr& msg, RealtimeGoalHandlePtr gh, std::string* error_string = nullptr);
+  virtual bool updateTrajectoryCommand(const JointTrajectoryConstPtr& msg, RealtimeGoalHandlePtr gh, std::string* error_string = 0);
   virtual void trajectoryCommandCB(const JointTrajectoryConstPtr& msg);
   virtual void goalCB(GoalHandle gh);
   virtual void cancelCB(GoalHandle gh);
@@ -252,57 +246,10 @@ protected:
    */
   void setHoldPosition(const ros::Time& time, RealtimeGoalHandlePtr gh=RealtimeGoalHandlePtr());
 
-protected:
-  /**
-   * @brief Returns the number of joints of the robot.
-   */
-  unsigned int getNumberOfJoints() const;
-
-  /**
-   * @brief Updates the states by sampling the specified trajectory for each joint
-   * at the specified sampling time.
-   *
-   * The current state is updated based on the values transmitted by the
-   * corresponding JointHandles.
-   *
-   * @param sample_time Time point at which the joint trajectories have to be sampled.
-   * @param traj Trajectory containing all joint trajectories currently under execution.
-   *
-   * @note This function is NOT thread safe but intended to be used in the
-   * update-function.
-   */
-  void updateStates(const ros::Time& sample_time, const Trajectory* const traj);
-
-protected:
-  /**
-   * @brief Returns a trajectory consisting of joint trajectories with one pre-allocated
-   * segment.
-   */
-  static TrajectoryPtr createHoldTrajectory(const unsigned int& number_of_joints);
-
-private:
-  /**
-   * @brief Allows derived classes to perform additional checks
-   * and to e.g. replace the newly calculated desired value before
-   * the hardware interface is finally updated.
-   *
-   * @param curr_traj The trajectory that is executed during the current update.
-   * @param time_data Updated time data.
-   */
-  virtual void updateFuncExtensionPoint(const Trajectory& curr_traj, const TimeData& time_data);
-
-private:
-  /**
-   * @brief Updates the pre-allocated feedback of the current active goal (if any)
-   * based on the current state values.
-   *
-   * @note This function is NOT thread safe but intended to be used in the
-   * update-function.
-   */
-  void setActionFeedback();
-
 };
 
 } // namespace
 
 #include <joint_trajectory_controller/joint_trajectory_controller_impl.h>
+
+#endif // header guard

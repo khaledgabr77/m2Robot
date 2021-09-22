@@ -28,8 +28,8 @@
 
 /// \author Sachin Chitta, Adolfo Rodriguez Tsouroukdissian
 
-#pragma once
-
+#ifndef GRIPPER_ACTION_CONTROLLER_HARDWARE_INTERFACE_ADAPTER_H
+#define GRIPPER_ACTION_CONTROLLER_HARDWARE_INTERFACE_ADAPTER_H
 
 #include <cassert>
 #include <string>
@@ -78,7 +78,7 @@ template<>
 class HardwareInterfaceAdapter<hardware_interface::PositionJointInterface>
 {
 public:
-  HardwareInterfaceAdapter() : joint_handle_ptr_(nullptr) {}
+  HardwareInterfaceAdapter() : joint_handle_ptr_(0) {}
 
   bool init(hardware_interface::JointHandle& joint_handle, ros::NodeHandle& controller_nh)
   {
@@ -128,7 +128,7 @@ template<>
 class HardwareInterfaceAdapter<hardware_interface::EffortJointInterface>
 {
 public:
-  HardwareInterfaceAdapter() : joint_handle_ptr_(nullptr) {}
+  HardwareInterfaceAdapter() : joint_handle_ptr_(0) {}
 
   bool init(hardware_interface::JointHandle& joint_handle, ros::NodeHandle& controller_nh)
   {
@@ -145,13 +145,13 @@ public:
       ROS_WARN_STREAM("Failed to initialize PID gains from ROS parameter server.");
       return false;
     }
-
+  
     return true;
   }
 
   void starting(const ros::Time& time)
   {
-    if (!joint_handle_ptr_)
+    if (!joint_handle_ptr_) 
     {
       return;
     }
@@ -185,3 +185,5 @@ private:
   PidPtr pid_;
   hardware_interface::JointHandle* joint_handle_ptr_;
 };
+
+#endif // header guard

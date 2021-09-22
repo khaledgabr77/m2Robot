@@ -32,8 +32,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef ODOMETRY_H_
+#define ODOMETRY_H_
 
 #include <ros/time.h>
 #include <boost/accumulators/accumulators.hpp>
@@ -263,3 +263,5 @@ namespace four_wheel_steering_controller
     double front_steer_vel_prev_, rear_steer_vel_prev_;
   };
 }
+
+#endif /* ODOMETRY_H_ */

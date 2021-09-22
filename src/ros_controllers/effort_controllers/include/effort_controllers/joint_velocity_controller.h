@@ -33,8 +33,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef EFFORT_CONTROLLERS__JOINT_VELOCITY_CONTROLLER_H
+#define EFFORT_CONTROLLERS__JOINT_VELOCITY_CONTROLLER_H
 
 /**
    @class effort_controllers::JointVelocityController
@@ -92,7 +92,7 @@ public:
    *
    * \returns True if initialization was successful and the controller
    * is ready to be started.
-   */
+   */  
   bool init(hardware_interface::EffortJointInterface *robot, ros::NodeHandle &n);
 
   /*!
@@ -135,7 +135,7 @@ public:
   void printDebug();
 
   /**
-   * \brief Set the PID parameters
+   * \brief Get the PID parameters
    */
   void setGains(const double &p, const double &i, const double &d, const double &i_max, const double &i_min, const bool &antiwindup = false);
 
@@ -143,7 +143,7 @@ public:
    * \brief Get the name of the joint this controller uses
    */
   std::string getJointName();
-
+  
   hardware_interface::JointHandle joint_;
   double command_;                                /**< Last commanded velocity. */
 
@@ -164,3 +164,5 @@ private:
 };
 
 } // namespace
+
+#endif

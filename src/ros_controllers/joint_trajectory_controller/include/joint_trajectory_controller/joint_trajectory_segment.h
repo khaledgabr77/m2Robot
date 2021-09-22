@@ -27,8 +27,8 @@
 
 /// \author Adolfo Rodriguez Tsouroukdissian
 
-#pragma once
-
+#ifndef JOINT_TRAJECTORY_CONTROLLER_JOINT_TRAJECTORY_SEGMENT_H
+#define JOINT_TRAJECTORY_CONTROLLER_JOINT_TRAJECTORY_SEGMENT_H
 
 // C++ standard
 #include <cmath>
@@ -128,8 +128,6 @@ public:
         if (!point.velocities.empty())    {this->velocity[i]     = point.velocities[i];}
         if (!point.accelerations.empty()) {this->acceleration[i] = point.accelerations[i];}
       }
-
-      this->time_from_start = point.time_from_start.toSec();
     }
   };
 
@@ -243,3 +241,5 @@ Scalar wraparoundJointOffset(const Scalar& prev_position,
 }
 
 } // namespace
+
+#endif // header guard

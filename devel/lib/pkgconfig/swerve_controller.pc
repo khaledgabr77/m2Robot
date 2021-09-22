@@ -1,0 +1,8 @@
+prefix=/home/ahmadelwaly/m2Robot/devel
+
+Name: swerve_controller
+Description: Description of swerve_controller
+Version: 0.0.0
+Cflags: -I/home/ahmadelwaly/m2Robot/src/ros_controllers/swerve_controller/include
+Libs: -L${prefix}/lib -lswerve_controller
+Requires: 

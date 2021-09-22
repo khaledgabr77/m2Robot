@@ -1,0 +1,8 @@
+prefix=/home/ahmadelwaly/m2Robot/devel
+
+Name: effort_controllers
+Description: Description of effort_controllers
+Version: 0.15.0
+Cflags: -I/home/ahmadelwaly/m2Robot/src/ros_controllers/effort_controllers/include
+Libs: -L${prefix}/lib -leffort_controllers
+Requires: angles controller_interface control_msgs control_toolbox forward_command_controller realtime_tools urdf

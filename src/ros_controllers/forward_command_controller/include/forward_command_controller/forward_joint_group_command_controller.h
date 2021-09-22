@@ -1,3 +1,4 @@
+
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
@@ -35,8 +36,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef FORWARD_COMMAND_CONTROLLER_FORWARD_JOINT_GROUP_COMMAND_CONTROLLER_H
+#define FORWARD_COMMAND_CONTROLLER_FORWARD_JOINT_GROUP_COMMAND_CONTROLLER_H
 
 #include <vector>
 #include <string>
@@ -94,7 +95,7 @@ public:
     {
       try
       {
-        joints_.push_back(hw->getHandle(joint_names_[i]));
+        joints_.push_back(hw->getHandle(joint_names_[i]));  
       }
       catch (const hardware_interface::HardwareInterfaceException& e)
       {
@@ -124,15 +125,17 @@ public:
 
 private:
   ros::Subscriber sub_command_;
-  void commandCB(const std_msgs::Float64MultiArrayConstPtr& msg)
+  void commandCB(const std_msgs::Float64MultiArrayConstPtr& msg) 
   {
     if(msg->data.size()!=n_joints_)
-    {
+    { 
       ROS_ERROR_STREAM("Dimension of command (" << msg->data.size() << ") does not match number of joints (" << n_joints_ << ")! Not executing!");
-      return;
+      return; 
     }
     commands_buffer_.writeFromNonRT(msg->data);
   }
 };
 
 }
+
+#endif

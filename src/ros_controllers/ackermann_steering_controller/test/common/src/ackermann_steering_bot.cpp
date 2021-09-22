@@ -51,6 +51,7 @@ int main(int argc, char **argv)
   spinner.start();
   while(ros::ok())
   {
+    ROS_WARN_STREAM("period: " << robot.getPeriod().toSec());
     robot.read();
     cm.update(robot.getTime(), robot.getPeriod());
     robot.write();

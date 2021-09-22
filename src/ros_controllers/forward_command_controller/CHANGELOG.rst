@@ -2,34 +2,6 @@
 Changelog for package forward_command_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-
-0.18.1 (2020-12-03)
--------------------
-
-0.18.0 (2020-10-11)
--------------------
-* Apply consistent format to forward_command_controller's CMakeLists.txt file
-* Update package.xml of forward_ccommand_controller pkg to format 3
-* Fix dependencies of forward_command_controller pkg
-* Contributors: Mateus Amarante
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Replace header guard with #pragma once
-* Contributors: Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-
 0.15.0 (2019-03-26)
 -------------------
 * Default all controller builds to C++14

@@ -35,8 +35,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef EFFORT_CONTROLLERS_JOINT_GROUP_EFFORT_CONTROLLER_H
+#define EFFORT_CONTROLLERS_JOINT_GROUP_EFFORT_CONTROLLER_H
 
 #include <forward_command_controller/forward_joint_group_command_controller.h>
 
@@ -59,3 +59,5 @@ namespace effort_controllers
 typedef forward_command_controller::ForwardJointGroupCommandController<hardware_interface::EffortJointInterface>
         JointGroupEffortController;
 }
+
+#endif

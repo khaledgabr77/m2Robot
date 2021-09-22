@@ -35,8 +35,8 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#pragma once
-
+#ifndef EFFORT_CONTROLLERS_JOINT_GROUP_POSITION_CONTROLLER_H
+#define EFFORT_CONTROLLERS_JOINT_GROUP_POSITION_CONTROLLER_H
 
 #include <control_msgs/JointControllerState.h>
 #include <control_toolbox/pid.h>
@@ -65,14 +65,13 @@ namespace effort_controllers
  * - \b command (std_msgs::Float64MultiArray) : The joint efforts to apply
  */
 class JointGroupPositionController : public controller_interface::Controller<hardware_interface::EffortJointInterface>
-{
+{  
 public:
   JointGroupPositionController();
   ~JointGroupPositionController();
 
   bool init(hardware_interface::EffortJointInterface* hw, ros::NodeHandle &n);
   void update(const ros::Time& /*time*/, const ros::Duration& /*period*/);
-  void starting(const ros::Time& /*time*/);
 
   std::vector< std::string > joint_names_;
   std::vector< hardware_interface::JointHandle > joints_;
@@ -91,3 +90,5 @@ private:
 }; // class
 
 } // namespace
+
+#endif

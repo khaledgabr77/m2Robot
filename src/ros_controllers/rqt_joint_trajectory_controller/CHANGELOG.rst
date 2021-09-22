@@ -2,41 +2,6 @@
 Changelog for package rqt_joint_trajectory_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.19.0 (2021-06-13)
--------------------
-
-0.18.1 (2020-12-03)
--------------------
-* Fix dependency on rospkg
-* Format package.xml and CMakeLists.txt files + clean deps of rqt_joint_trajectory_controller pkg
-* Contributors: Mateus Amarante Araújo
-
-0.18.0 (2020-10-11)
--------------------
-* Use Python3 explicitly
-* fix shebang line for python3
-* Contributors: Bence Magyar, Mikael Arguedas
-
-0.17.0 (2020-05-12)
--------------------
-
-0.16.1 (2020-04-27)
--------------------
-
-0.16.0 (2020-04-16)
--------------------
-* Bump CMake version to prevent CMP0048
-* Contributors: Matt Reynolds
-
-0.15.1 (2020-03-09)
--------------------
-* Merge pull request `#452 <https://github.com/ros-controls/ros_controllers/issues/452>`_ from etsiogas/add-robot-ns-to-gui
-  Added robot namespace to gui of rqt_joint_trajectory_controller
-* [rqt joint trajectory controller] Python3 fixes (`#458 <https://github.com/ros-controls/ros_controllers/issues/458>`_)
-  - Use explicit relative import (with leading dot)
-  - print function with parentheses
-* Contributors: Bence Magyar, Bjar Ne, etsiogas
-
 0.15.0 (2019-03-26)
 -------------------
 

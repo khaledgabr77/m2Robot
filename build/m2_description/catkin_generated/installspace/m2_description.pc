@@ -1,0 +1,8 @@
+prefix=/home/ahmadelwaly/m2Robot/install
+
+Name: m2_description
+Description: Description of m2_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
