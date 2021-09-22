@@ -1,15 +1,15 @@
 <launch>
   <!-- Start gazebo world -->
-  <!--<include file="$(find gazebo_ros)/launch/empty_world.launch"/>-->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
   <!-- OR -->
   <!-- Start four_wheel_steering -->
-  <node name="four_wheel_steering"
+  <!--node name="four_wheel_steering"
       pkg="four_wheel_steering_controller"
-      type="four_wheel_steering" output="screen"/>
+      type="four_wheel_steering" output="screen"/-->
 
   <!-- load robot -->
   <param name="robot_description"
-         command="$(find xacro)/xacro --inorder '$(find four_wheel_steering_controller)/test/urdf/four_wheel_steering.urdf.xacro'" />
+         command="$(find xacro)/xacro --inorder '$(find four_wheel_steering_controller)/test/urdf/chassis.xacro'" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 

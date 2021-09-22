@@ -602,7 +602,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_lb"/>
       <child link="drive_motor_lb"/>
       <axis xyz="0 0 1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -615,7 +615,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_lf"/>
       <child link="drive_motor_lf"/>
       <axis xyz="0 0 -1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -628,7 +628,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_rb"/>
       <child link="drive_motor_rb"/>
       <axis xyz="0 0 -1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -641,7 +641,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_rf"/>
       <child link="drive_motor_rf"/>
       <axis xyz="0 0 1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="300.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -749,7 +749,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="drive_motor_lb"/>
       <child link="wheel_lb"/>
       <axis xyz="0 -1.0 0"/>
-      <limit effort="20.0" velocity="200.0"/>
+      <limit effort="200.0" velocity="2000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -760,7 +760,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="drive_motor_lf"/>
       <child link="wheel_lf"/>
       <axis xyz="0 -1.0 0"/>
-      <limit effort="20.0" velocity="200.0"/>
+      <limit effort="200.0" velocity="2000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -771,7 +771,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="drive_motor_rb"/>
       <child link="wheel_rb"/>
       <axis xyz="0 -1.0 0"/>
-      <limit effort="20.0" velocity="200.0"/>
+      <limit effort="200.0" velocity="2000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -782,7 +782,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="drive_motor_rf"/>
       <child link="wheel_rf"/>
       <axis xyz="0 -1.0 0"/>
-      <limit effort="20.0" velocity="200.0"/>
+      <limit effort="200.0" velocity="2000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -880,29 +880,29 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
     <gazebo reference="wheel_lf">
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="wheel_rf">
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="wheel_lb">
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="wheel_rb">
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
