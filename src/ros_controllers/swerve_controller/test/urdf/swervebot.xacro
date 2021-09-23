@@ -602,7 +602,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_lb"/>
       <child link="drive_motor_lb"/>
       <axis xyz="0 0 1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="100.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -614,8 +614,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="-0.07688 0.338 0" rpy="0 -1.5708 0"/>
       <parent link="steering_strut_lf"/>
       <child link="drive_motor_lf"/>
-      <axis xyz="0 0 -1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="100.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -627,8 +627,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="-0.07688 -0.338 0" rpy="0 -1.5708 0"/>
       <parent link="steering_strut_rb"/>
       <child link="drive_motor_rb"/>
-      <axis xyz="0 0 -1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="100.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -641,7 +641,7 @@ POSSIBILITY OF SUCH DAMAGE.
       <parent link="steering_strut_rf"/>
       <child link="drive_motor_rf"/>
       <axis xyz="0 0 1.0"/>
-      <limit lower="-0.575958653" upper="1.151917306" effort="10.0" velocity="3000.0"/>
+      <limit lower="-0.575958653" upper="1.151917306" effort="100.0" velocity="3000.0"/>
       <!-- lower and upper limits => rad -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -748,8 +748,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="0 0.22997 0.0559" rpy="0 0 0"/>
       <parent link="drive_motor_lb"/>
       <child link="wheel_lb"/>
-      <axis xyz="0 -1.0 0"/>
-      <limit effort="200.0" velocity="2000.0"/>
+      <axis xyz="0 1.0 0"/>
+      <limit effort="2000.0" velocity="20000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -759,8 +759,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="-3e-05 0.23811 0.0559" rpy="0 0 0"/>
       <parent link="drive_motor_lf"/>
       <child link="wheel_lf"/>
-      <axis xyz="0 -1.0 0"/>
-      <limit effort="200.0" velocity="2000.0"/>
+      <axis xyz="0 1.0 0"/>
+      <limit effort="2000.0" velocity="20000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -770,8 +770,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
       <parent link="drive_motor_rb"/>
       <child link="wheel_rb"/>
-      <axis xyz="0 -1.0 0"/>
-      <limit effort="200.0" velocity="2000.0"/>
+      <axis xyz="0 1.0 0"/>
+      <limit effort="2000.0" velocity="20000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->
@@ -781,8 +781,8 @@ POSSIBILITY OF SUCH DAMAGE.
       <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
       <parent link="drive_motor_rf"/>
       <child link="wheel_rf"/>
-      <axis xyz="0 -1.0 0"/>
-      <limit effort="200.0" velocity="2000.0"/>
+      <axis xyz="0 1.0 0"/>
+      <limit effort="2000.0" velocity="20000.0"/>
       <!-- effort = ? (0.5 stall torque) -->
       <!-- effort => N.m -->
       <!-- velocity => rad/s -->

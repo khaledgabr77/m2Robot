@@ -32,18 +32,8 @@ swervebot:
 
         # Geometry (Do not provide the following if you want it to be parsed in the URDF)
         track: 1.2
-        wheel_steering_y_offset: 0.2
+        wheel_steering_y_offset: 0.0
         wheel_radius: 0.22
         wheel_base: 1.66
 
-    # Low-Level Controllers -------------------------------------
-    gazebo_ros_control:
-        pid_gains:
-            leg_lf_joint: {p: 50.0, i: 0.5, d: 5}
-            leg_rf_joint: {p: 50.0, i: 0.5, d: 5}
-            leg_lh_joint: {p: 50.0, i: 0.5, d: 5}
-            leg_rh_joint: {p: 50.0, i: 0.5, d: 5}
-            wheel_lf_joint: {p: 50.0, i: 2.0, d: 0.001}
-            wheel_rf_joint: {p: 50.0, i: 2.0, d: 0.001}
-            wheel_lh_joint: {p: 50.0, i: 2.0, d: 0.001}
-            wheel_rh_joint: {p: 50.0, i: 2.0, d: 0.001}
+
