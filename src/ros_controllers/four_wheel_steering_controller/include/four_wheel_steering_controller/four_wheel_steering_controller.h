@@ -33,6 +33,9 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
+#pragma once
+
+
 #include <controller_interface/multi_interface_controller.h>
 #include <hardware_interface/joint_command_interface.h>
 #include <pluginlib/class_list_macros.hpp>
@@ -163,6 +166,9 @@ namespace four_wheel_steering_controller{
 
     /// Frame to use for the robot base:
     std::string base_frame_id_;
+
+    /// Frame to use for odometry and odom tf: //added
+    std::string odom_frame_id_;                //added
 
     /// Whether to publish odometry to tf or not:
     bool enable_odom_tf_;

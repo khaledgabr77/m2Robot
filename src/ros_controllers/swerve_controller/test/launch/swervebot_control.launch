@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-	<arg name="joy" default="false"/>
-	<arg name="keyboard" default="true"/>
+	<arg name="joy" default="true"/>
+	<arg name="keyboard" default="false"/>
 	<arg name="groundtruth" default="true"/>
 
 	<!-- Load low-level drive controller configuration for the wheels from YAML file to parameter server -->

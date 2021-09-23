@@ -14,7 +14,18 @@ four_wheel_steering_controller:
 
   # Base frame_id
   base_frame_id: base_footprint
-
+  track: 1.2
+  wheel_steering_y_offset: 0.2
+  wheel_radius: 0.22
+  wheel_base: 1.66
   # Odometry fused with IMU is published by robot_localization, so
   # no need to publish a TF based on encoders alone.
   enable_odom_tf: true
+
+  gazebo_ros_control:
+      pid_gains:
+          front_steering: {p: 50.0, i: 0.5, d: 5}
+          rear_steering: {p: 50.0, i: 0.5, d: 5} 
+          front_wheel: {p: 50.0, i: 2.0, d: 0.001}
+          rear_wheel: {p: 50.0, i: 2.0, d: 0.001}
+   

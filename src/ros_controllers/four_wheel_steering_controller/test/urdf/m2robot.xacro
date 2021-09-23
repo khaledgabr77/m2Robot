@@ -1,0 +1,1002 @@
+<?xml version="1.0"?>
+<!--
+Software License Agreement (BSD License)
+
+Copyright (c) 2020, Exobotic
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above
+   copyright notice, this list of conditions and the following
+   disclaimer in the documentation and/or other materials provided
+   with the distribution.
+ * Neither the name of Exobotic nor the names of its
+   contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-->
+
+
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="m2"
+         xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <material name="LiDAR_grey">
+      <color rgba="0.59608 0.59608 0.59608 1.0"/>
+    </material>
+
+    <material name="Metal_Bling chrome">
+      <color rgba="0.8 0.8 0.82431 1.0"/>
+    </material>
+
+    <material name="Synth_Tyre rubber">
+      <color rgba="0.01678 0.01212 0.01212 1.0"/>
+    </material>
+
+    <material name="blue_police_light">
+      <color rgba="0 0 1.0 1.0"/>
+    </material>
+
+    <material name="body_black">
+      <color rgba="0.10594 0.10594 0.10594 1.0"/>
+    </material>
+
+    <material name="body_grey">
+      <color rgba="0.96 0.96 0.96 1.0"/>
+    </material>
+
+    <material name="red_police_light">
+      <color rgba="1.0 0 0 1.0"/>
+    </material>
+
+    <material name="white_police_light">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <material name="dummy_mat">
+      <color rgba="0.4 0.4 0.4 1.0"/>
+    </material>
+  
+    <link name="base_footprint"/>
+    
+    <link name="chassis">
+      <inertial>
+        <origin xyz="0.08838 -0.00198 0.17552" rpy="0 0 0"/>
+        <mass value="200.0"/>
+        <inertia ixx="24.43942" ixy="-3.57208" ixz="-2.64293" iyy="116.11656" iyz="0.10486" izz="111.43803"/>
+      </inertial>
+      
+      <visual name="body_front_lights_vis">
+        <origin xyz="0.98421 0.00023 0.09713" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_front_lights_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_lights_blue_vis">
+        <origin xyz="0.37794 0.18642 0.7649" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_blue_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="blue_police_light"/>
+      </visual>
+      <visual name="body_lights_red_vis">
+        <origin xyz="0.37978 -0.18222 0.76491" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_red_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="red_police_light"/>
+      </visual>
+      <visual name="body_lights_white_vis">
+        <origin xyz="0.40793 0.00023 0.7689" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_lights_white_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="white_police_light"/>
+      </visual>
+      <visual name="body_vis">
+        <origin xyz="0.07415 0.00012 0.24822" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      <visual name="camera_top_vis">
+        <origin xyz="0.11195 0.00142 1.30874" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/camera_top_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="chassis_vis">
+        <origin xyz="0.01034 -3e-05 0.00065" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/chassis_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <visual name="text_body_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_body_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <visual name="text_front_vis">
+        <origin xyz="-0.38196 0.00023 0.4187" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/text_front_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_grey"/>
+      </visual>
+      
+      <collision name="body_col">
+        <origin xyz="0.00514 0.00023 0.42524" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.01448 0.94935 1.16925"/>
+        </geometry>
+      </collision>
+      <collision name="camera_top_col">
+        <origin xyz="0.11195 0.0019 1.25215" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.06976" length="0.25"/>
+        </geometry>
+      </collision>
+      <collision name="chassis_col">
+        <origin xyz="0.01121 0.00023 0.02431" rpy="0 0 0"/>
+        <geometry>
+          <box size="1.9958 0.72 0.35508"/>
+        </geometry>
+      </collision>
+    
+    </link>
+
+    <link name="drive_motor_lb">
+      <inertial>
+        <origin xyz="-0.00105 0.08331 0.05321" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09492" ixy="6e-05" ixz="8e-05" iyy="0.03042" iyz="-0.00181" izz="0.09704"/>
+      </inertial>
+      <visual name="drive_motor_lb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_lb_col">
+        <origin xyz="0 0.09943 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.34444 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_lf">
+      <inertial>
+        <origin xyz="0.00102 0.07894 0.05182" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09256" ixy="0" ixz="4e-05" iyy="0.03047" iyz="-0.00143" izz="0.09479"/>
+      </inertial>
+      <visual name="drive_motor_lf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_lf_col">
+        <origin xyz="0 0.08243 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.31044 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_rb">
+      <inertial>
+        <origin xyz="-0.00156 -0.08306 0.05155" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.0948" ixy="3e-05" ixz="-4e-05" iyy="0.03031" iyz="0.00155" izz="0.09706"/>
+      </inertial>
+      <visual name="drive_motor_rb_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_rb_col">
+        <origin xyz="0 -0.09943 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.34444 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="drive_motor_rf">
+      <inertial>
+        <origin xyz="0.00053 -0.08238 0.0526" rpy="0 0 0"/>
+        <mass value="17.0"/>
+        <inertia ixx="0.09367" ixy="0" ixz="4e-05" iyy="0.03055" iyz="0.00168" izz="0.09585"/>
+      </inertial>
+      <visual name="drive_motor_rf_vis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/drive_motor_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="drive_motor_rf_col">
+        <origin xyz="0 -0.08243 0.0535" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.129 0.31044 0.107"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lb_1">
+      <inertial>
+        <origin xyz="0.05551 0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="2e-05" ixz="2e-05" iyy="0.00016" iyz="-0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_lb_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lb_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lb_1_col">
+        <origin xyz="0.0564 0.02221 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lb_2">
+      <inertial>
+        <origin xyz="-0.00989 -0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_lb_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lb_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lb_2_col">
+        <origin xyz="-0.01732 -0.00682 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lf_1">
+      <inertial>
+        <origin xyz="0.05551 0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="2e-05" ixz="2e-05" iyy="0.00016" iyz="-0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_lf_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lf_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lf_1_col">
+        <origin xyz="0.0564 0.02221 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_lf_2">
+      <inertial>
+        <origin xyz="-0.00989 -0.00389 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_lf_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_lf_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_lf_2_col">
+        <origin xyz="-0.01732 -0.00682 0" rpy="0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rb_1">
+      <inertial>
+        <origin xyz="0.05551 -0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="-2e-05" ixz="2e-05" iyy="0.00016" iyz="0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_rb_1_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rb_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rb_1_col">
+        <origin xyz="0.0564 -0.02221 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rb_2">
+      <inertial>
+        <origin xyz="-0.00989 0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_rb_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rb_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rb_2_col">
+        <origin xyz="-0.01732 0.00682 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0588"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rf_1">
+      <inertial>
+        <origin xyz="0.05551 -0.02184 0" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.00025" ixy="-2e-05" ixz="2e-05" iyy="0.00016" iyz="0.0001" izz="0.00014"/>
+      </inertial>
+      <visual name="shock_rf_1_vis">
+        <origin xyz="-0.00212 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rf_1_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rf_1_col">
+        <origin xyz="0.0564 -0.02221 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.026" length="0.143"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shock_rf_2">
+      <inertial>
+        <origin xyz="-0.00989 0.0039 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="shock_rf_2_vis">
+        <origin xyz="0 0 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/shock_rf_2_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Metal_Bling chrome"/>
+      </visual>
+      <collision name="shock_rf_2_col">
+        <origin xyz="-0.01732 0.00682 0" rpy="-0.37525 -1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.0855"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_lb">
+      <inertial>
+        <origin xyz="-0.08769 0.29243 0.00302" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31565" ixy="-0.00098" ixz="-0.00177" iyy="0.16606" iyz="0.03697" izz="0.18926"/>
+      </inertial>
+      <visual name="steering_strut_lb_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_lb_col">
+        <origin xyz="-0.13494 0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_lf">
+      <inertial>
+        <origin xyz="-0.08804 0.29249 -0.0033" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31482" ixy="0.001" ixz="0.00195" iyy="0.16594" iyz="0.03691" izz="0.18863"/>
+      </inertial>
+      <visual name="steering_strut_lf_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_lf_col">
+        <origin xyz="-0.13494 0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_rb">
+      <inertial>
+        <origin xyz="-0.08813 -0.29272 0.00331" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.31515" ixy="-0.001" ixz="0.00196" iyy="0.16587" iyz="-0.03697" izz="0.18903"/>
+      </inertial>
+      <visual name="steering_strut_rb_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_rb_col">
+        <origin xyz="-0.13494 -0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steering_strut_rf">
+      <inertial>
+        <origin xyz="-0.08814 -0.29281 -0.00283" rpy="0 0 0"/>
+        <mass value="25.0"/>
+        <inertia ixx="0.3161" ixy="0.00093" ixz="-0.00165" iyy="0.16581" iyz="-0.03733" izz="0.18996"/>
+      </inertial>
+      <visual name="steering_strut_rf_vis">
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/steering_strut_rf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="body_black"/>
+      </visual>
+      <collision name="steering_strut_rf_col">
+        <origin xyz="-0.13494 -0.19601 0" rpy="0 -1.5708 0"/>
+        <geometry>
+          <box size="0.129 0.43202 0.30988"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_lb">
+      <inertial>
+        <origin xyz="3e-05 0.00876 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35771" ixy="0" ixz="2e-05" iyy="0.56131" iyz="0" izz="0.35768"/>
+      </inertial>
+      <visual name="wheel_lb_vis">
+        <origin xyz="-1e-05 0.00056 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_lb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_lb_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_lf">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35711" ixy="0" ixz="-2e-05" iyy="0.56069" iyz="0" izz="0.35709"/>
+      </inertial>
+      <visual name="wheel_lf_vis">
+        <origin xyz="6e-05 -0.00772 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_lf_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_lf_col">
+        <origin xyz="3e-05 -0.00814 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rb">
+      <inertial>
+        <origin xyz="3e-05 -0.00876 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35771" ixy="0" ixz="-2e-05" iyy="0.56131" iyz="0" izz="0.35768"/>
+      </inertial>
+      <visual name="wheel_rb_vis">
+        <origin xyz="-1e-05 -0.00055 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_rb_vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_rb_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rf">
+      <inertial>
+        <origin xyz="-3e-05 -0.00814 0" rpy="0 0 0"/>
+        <mass value="28.0"/>
+        <inertia ixx="0.35711" ixy="0" ixz="2e-05" iyy="0.56069" iyz="0" izz="0.35709"/>
+      </inertial>
+      <visual name="wheel_rf_vis">
+        <origin xyz="3e-05 -0.00041 1e-05" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://m2_description/meshes/dae/wheel_rf.vis.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Synth_Tyre rubber"/>
+      </visual>
+      <collision name="wheel_rf_col">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.22423" length="0.20878"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- ### JOINTS ### -->
+
+    <joint name="base_footprint_to_chassis" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="base_footprint"/>
+      <child link="chassis"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_lb_to_drive_motor_lb" type="revolute">
+      <origin xyz="-0.07688 0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_lb"/>
+      <child link="drive_motor_lb"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="0.575958653" effort="1000.0" velocity="3.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_lf_to_drive_motor_lf" type="revolute">
+      <origin xyz="-0.07688 0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_lf"/>
+      <child link="drive_motor_lf"/>
+      <axis xyz="0 0 -1.0"/>
+      <limit lower="-0.575958653" upper="0.575958653" effort="1000.0" velocity="3.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_rb_to_drive_motor_rb" type="revolute">
+      <origin xyz="-0.07688 -0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_rb"/>
+      <child link="drive_motor_rb"/>
+      <axis xyz="0 0 -1.0"/>
+      <limit lower="-0.575958653" upper="0.575958653" effort="1000.0" velocity="3.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <!-- This joint contains the steering motor too -->
+    <joint name="steering_strut_rf_to_drive_motor_rf" type="revolute">
+      <origin xyz="-0.07688 -0.338 0" rpy="0 -1.5708 0"/>
+      <parent link="steering_strut_rf"/>
+      <child link="drive_motor_rf"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-0.575958653" upper="0.575958653" effort="1000.0" velocity="3.0"/>
+      <!-- lower and upper limits => rad -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+      <dynamics damping="0.7"/>
+    </joint>
+
+    <joint name="chassis_to_shock_lb_1" type="continuous">
+      <origin xyz="-0.8202 0.10995 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_lb_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_lb_to_shock_lb_2" type="continuous">
+      <origin xyz="-0.02 0.114 -0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_lb"/>
+      <child link="shock_lb_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_lf_1" type="continuous">
+      <origin xyz="0.84304 0.10995 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_lf_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_lf_to_shock_lf_2" type="continuous">
+      <origin xyz="-0.02 0.114 0.00043" rpy="0 0 0"/>
+      <parent link="steering_strut_lf"/>
+      <child link="shock_lf_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_rb_1" type="continuous">
+      <origin xyz="-0.8202 -0.1095 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_rb_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_rb_to_shock_rb_2" type="continuous">
+      <origin xyz="-0.02 -0.114 -0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_rb"/>
+      <child link="shock_rb_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_shock_rf_1" type="continuous">
+      <origin xyz="0.84304 -0.1095 0.03063" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="shock_rf_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="steering_strut_rf_to_shock_rf_2" type="continuous">
+      <origin xyz="-0.02 -0.114 0.00044" rpy="0 0 0"/>
+      <parent link="steering_strut_rf"/>
+      <child link="shock_rf_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="chassis_to_steering_strut_lb" type="continuous">
+      <origin xyz="-0.81976 0.05092 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_lb"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_lf" type="continuous">
+      <origin xyz="0.8426 0.05092 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_lf"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_rb" type="continuous">
+      <origin xyz="-0.81976 -0.05047 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_rb"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="chassis_to_steering_strut_rf" type="continuous">
+      <origin xyz="0.8426 -0.05047 -0.12893" rpy="0 1.5708 0"/>
+      <parent link="chassis"/>
+      <child link="steering_strut_rf"/>
+      <axis xyz="0 0 1.0"/>
+      <!-- <limit effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="drive_motor_lb_to_wheel_lb" type="continuous">
+      <origin xyz="0 0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_lb"/>
+      <child link="wheel_lb"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="200.0" velocity="2000.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_lf_to_wheel_lf" type="continuous">
+      <origin xyz="-3e-05 0.23811 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_lf"/>
+      <child link="wheel_lf"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="200.0" velocity="2000.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_rb_to_wheel_rb" type="continuous">
+      <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_rb"/>
+      <child link="wheel_rb"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="200.0" velocity="2000.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    <joint name="drive_motor_rf_to_wheel_rf" type="continuous">
+      <origin xyz="0 -0.22997 0.0559" rpy="0 0 0"/>
+      <parent link="drive_motor_rf"/>
+      <child link="wheel_rf"/>
+      <axis xyz="0 -1.0 0"/>
+      <limit effort="200.0" velocity="2000.0"/>
+      <!-- effort = ? (0.5 stall torque) -->
+      <!-- effort => N.m -->
+      <!-- velocity => rad/s -->
+    </joint>
+
+    
+ 
+
+
+
+
+
+    <!-- ### TRANSMISSIONS ### -->
+		<transmission name="wheel_rf" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="wheel_rf">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="drive_motor_rf_to_wheel_rf">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+
+		<transmission name="wheel_lf" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="wheel_lf">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="drive_motor_lf_to_wheel_lf">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+
+		<transmission name="wheel_rb" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="wheel_rb">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="drive_motor_rb_to_wheel_rb">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+		<transmission name="wheel_lb" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="wheel_lb">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="drive_motor_lb_to_wheel_lb">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+
+    <transmission name="steering_rf" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="steering_rf">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="steering_strut_rf_to_drive_motor_rf">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+    <transmission name="steering_lf" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="steering_lf">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="steering_strut_lf_to_drive_motor_lf">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+    <transmission name="steering_rb" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="steering_rb">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="steering_strut_rb_to_drive_motor_rb">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+    <transmission name="steering_lb" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="steering_lb">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="steering_strut_lb_to_drive_motor_lb">
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+
+
+
+    <gazebo reference="wheel_lf">
+			<mu1 value="1.0"/>
+			<mu2 value="1.0"/>
+			<kp value="10000000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="wheel_rf">
+			<mu1 value="1.0"/>
+			<mu2 value="1.0"/>
+			<kp value="10000000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_lb">
+			<mu1 value="1.0"/>
+			<mu2 value="1.0"/>
+			<kp value="10000000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="wheel_rb">
+			<mu1 value="1.0"/>
+			<mu2 value="1.0"/>
+			<kp value="10000000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+      <gravity>true</gravity>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo>
+      
+  
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+ 
+
+      <joint name="shock_lf" type="prismatic">
+        <child>shock_lf_1</child>
+        <parent>shock_lf_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_lb" type="prismatic">
+        <child>shock_lb_1</child>
+        <parent>shock_lb_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_rf" type="prismatic">
+        <child>shock_rf_1</child>
+        <parent>shock_rf_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+      <joint name="shock_rb" type="prismatic">
+        <child>shock_rb_1</child>
+        <parent>shock_rb_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0.0</lower>
+            <upper>0.08</upper>
+            <effort>60</effort>
+            <velocity>1000</velocity>
+            <!-- upper and lower limits are in meters -->
+            <!-- effort is in N (effort = shock_stroke * spring constant)-->
+          </limit>
+        </axis>
+        </joint>
+
+    </gazebo>
+</robot>
