@@ -19,8 +19,8 @@ swervebot:
         rh_steering: "steering_strut_rb_to_drive_motor_rb"
 
         # Range of motion of steering motors
-        min_steering_angle: -1.58
-        max_steering_angle: 1.58
+        min_steering_angle: -1.15
+        max_steering_angle: 1.15
 
         # Other
         publish_rate: 50
