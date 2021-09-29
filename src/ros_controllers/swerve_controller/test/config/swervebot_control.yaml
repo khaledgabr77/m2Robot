@@ -35,5 +35,15 @@ swervebot:
         wheel_steering_y_offset: 0.0
         wheel_radius: 0.22
         wheel_base: 1.66
+    gazebo_ros_control:
+        pid_gains:
+            lf_steering: {p: 50.0, i: 0.5, d: 5}
+            rf_steering: {p: 50.0, i: 0.5, d: 5}
+            lh_steering: {p: 50.0, i: 0.5, d: 5}
+            rh_steering: {p: 50.0, i: 0.5, d: 5}
+            lf_wheel: {p: 50.0, i: 2.0, d: 0.001}
+            rf_wheel: {p: 50.0, i: 2.0, d: 0.001}
+            lh_wheel: {p: 50.0, i: 2.0, d: 0.001}
+            rh_wheel: {p: 50.0, i: 2.0, d: 0.001}
 
 
