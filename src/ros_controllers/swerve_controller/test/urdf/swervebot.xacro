@@ -880,29 +880,29 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
     <gazebo reference="wheel_lf">
-      <mu1>0.1</mu1>
-      <mu2>0.1</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="wheel_rf">
-      <mu1>0.1</mu1>
-      <mu2>0.1</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="wheel_lb">
-      <mu1>0.1</mu1>
-      <mu2>0.1</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="wheel_rb">
-      <mu1>0.1</mu1>
-      <mu2>0.1</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <gravity>true</gravity>
       <selfCollide>false</selfCollide>
     </gazebo>
